@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Battleship</title>
+  </head>
+  <body>
+    <header>
+      <div class="title">Battleship</div>
+    </header>
+    <main>
+      <div class="config">
+        <span>Deploy your fleet</span>
+        <button class="rotate-btn">Rotate</button>
+        <div class="fleet">
+          <div id="carrier" class="ship" draggable="true">
+            <div id="carrier-0" class="ship-part"></div>
+            <div id="carrier-1" class="ship-part"></div>
+            <div id="carrier-2" class="ship-part"></div>
+            <div id="carrier-3" class="ship-part"></div>
+            <div id="carrier-4" class="ship-part"></div>
+          </div>
+          <div id="battleship" class="ship" draggable="true">
+            <div id="battleship-0" class="ship-part"></div>
+            <div id="battleship-1" class="ship-part"></div>
+            <div id="battleship-2" class="ship-part"></div>
+            <div id="battleship-3" class="ship-part"></div>
+          </div>
+          <div id="destroyer" class="ship" draggable="true">
+            <div id="destroyer-0" class="ship-part"></div>
+            <div id="destroyer-1" class="ship-part"></div>
+            <div id="destroyer-2" class="ship-part"></div>
+          </div>
+          <div id="submarine" class="ship" draggable="true">
+            <div id="submarine-0" class="ship-part"></div>
+            <div id="submarine-1" class="ship-part"></div>
+            <div id="submarine-2" class="ship-part"></div>
+          </div>
+          <div id="patrol-boat" class="ship" draggable="true">
+            <div id="patrol-boat-0" class="ship-part"></div>
+            <div id="patrol-boat-1" class="ship-part"></div>
+          </div>
+        </div>
+        <div class="config-btns">
+          <button class="start-btn">Start Game</button>
+          <button class="random-btn">Randomize</button>
+          <button class="reset-btn">Reset</button>
+        </div>
+      </div>
+      <div class="boards">
+        <div class="board player-board"></div>
+        <div class="console"></div>
+        <div class="board enemy-board"></div>
+        <div class="display-overlay">
+          <div class="message"></div>
+          <button class="restart-btn">Play again</button>
+        </div>
+      </div>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>

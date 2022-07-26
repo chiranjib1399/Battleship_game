@@ -1,0 +1,286 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 2.5vw;
+  font-family: "Metal Mania", cursive;
+  color: #e8e6e3;
+  background-color: #282b2c;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(3rem, 6vw, 5rem);
+  height: 10vh;
+}
+
+main {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 90vh;
+  width: max-content;
+  transform: translateX(5%);
+  transition: all 0.5s ease-in;
+}
+
+main.start {
+  transform: translateX(-23%);
+}
+
+.config {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 30vw;
+  height: calc(3vw * 11 + 50px);
+  padding: 0.5vw;
+}
+
+.config span {
+  white-space: nowrap;
+}
+
+.fleet {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+}
+
+.fleet.vertical {
+  flex-direction: row;
+}
+
+.ship {
+  display: flex;
+  width: min-content;
+  cursor: move;
+}
+
+.ship.vertical {
+  flex-direction: column;
+  height: min-content;
+}
+
+.ship-part {
+  width: 2.5vw;
+  height: 2.5vw;
+  background-color: #ffcc20;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.start-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.rotate-btn {
+  background-color: gray;
+}
+
+button {
+  color: #e8e6e3;
+  background-color: #3d87a0;
+  border-style: none;
+  font-size: 2vw;
+  margin: 0.5vw;
+  cursor: pointer;
+  border: 1px double red;
+}
+
+.config-btns {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  margin-top: 1rem;
+}
+
+.boards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+}
+
+.player-board {
+  display: grid;
+  grid-template-columns: repeat(11, 2.5vw);
+  grid-gap: 1px;
+  margin-left: 5%;
+}
+
+.enemy-board {
+  display: none;
+  grid-template-columns: repeat(11, 2.5vw);
+  width: min-content;
+  grid-gap: 1px;
+  margin-right: 5%;
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5vw;
+  box-shadow: 0 0 0 1px rgba(170, 170, 170, 0.5);
+  width: 2.5vw;
+  height: 2.5vw;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5vw;
+  font-weight: 300;
+  box-shadow: none;
+  border: none;
+}
+
+.square.occupied {
+  background-color: #ffcc20;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.square.missed {
+  background-color: aqua;
+}
+
+.square.hit {
+  background-color: red;
+}
+
+.console {
+  visibility: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+  width: calc(85vw - 22 * 2.5vw);
+  height: 16vh;
+  font-size: clamp(0.5rem, 1vw, 1rem);
+  background-color: rgba(128, 128, 128, 0.2);
+  overflow-y: auto;
+}
+
+.console.show {
+  visibility: visible;
+}
+
+.display-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  visibility: hidden;
+  color: #ffcc20;
+  width: 100vw;
+  height: 20vw;
+  background-color: rgba(187, 187, 187, 0.8);
+}
+
+.display-overlay.visible {
+  visibility: visible;
+}
+
+.restart-btn {
+  height: min-content;
+  background-color: #282b2c;
+}
+
+@media screen and (max-width: 960px) {
+  main {
+    margin-top: 5%;
+  }
+
+  main.start {
+    transform: translateX(0);
+    flex-direction: column;
+  }
+
+  .boards {
+    flex-direction: column;
+    align-items: center;
+    padding-right: 25vw;
+  }
+  .player-board {
+    margin-left: 0;
+  }
+  .enemy-board {
+    margin-right: 0;
+  }
+  .console {
+    width: 50vw;
+    height: 12vw;
+    margin: 2vw 0 2vw;
+  }
+
+  .config.hide {
+    visibility: hidden;
+    height: 10vw;
+  }
+
+  .config-btns {
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .player-board,
+  .enemy-board {
+    grid-template-columns: repeat(11, 3vw);
+  }
+
+  .square {
+    width: 3vw;
+    height: 3vw;
+  }
+
+  .ship-part {
+    width: 3vw;
+    height: 3vw;
+  }
+}
+
+@media screen and (max-width: 478px) {
+  .title {
+    margin-bottom: 2rem;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  main.start {
+    transform: translateX(0);
+  }
+
+  .player-board,
+  .enemy-board {
+    grid-template-columns: repeat(11, 4vw);
+  }
+
+  .player-board {
+    margin-top: 1rem;
+  }
+
+  .square {
+    width: 4vw;
+    height: 4vw;
+  }
+
+  .ship-part {
+    width: 4vw;
+    height: 4vw;
+  }
+
+  .boards {
+    padding: 0;
+  }
+}
